@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser');
 
 const app = express()
+const dataFile = "data.txt"
 
 const port = 80
 
@@ -12,15 +13,21 @@ app.use(express.static('public'))
 
 app.get('/', (req, res) =>
 {
-    fs.readFile('data.txt', (err, data) =>
+    fs.readFile(dataFile, (err, data) =>
     {
-        res.render('index', {data: data.toString().split('\r\n')})
+        res.render('index', {data: data.toString().split('\n')})
     })
 })
 
 app.post('/add', (req, res) =>
 {
-    console.log(req.body.text);
+    var newText = req.body.text
+    console.log(`Got new text: ${newText}`)
+    fs.appendFile(dataFile, "\n" + newText, (err) =>
+    {
+        if (err)
+            throw err
+    })
 })
 
 app.listen(port, () =>

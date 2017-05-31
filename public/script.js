@@ -9,4 +9,6 @@ function submit()
             text: $('#text').val()
         }
     })
+    
+    window.location.reload(true);
 }
