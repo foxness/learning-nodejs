@@ -9,7 +9,9 @@
             <h1>data:</h1>
             <div>
                 <ul>
-                    <li>some data</li>
+                <% for(var i = 0; i < data.length; i++) {%>
+                    <li><%= data[i] %></li>
+                <% } %>
                 </ul>
             </div>
         </div>
