@@ -7,9 +7,11 @@ const app = express()
 var port = 80
 var data = fs.readFileSync('data.txt').toString().split('\r\n')//.map(v => v.trim())
 
+app.set('view engine', 'ejs');
+
 app.get('/', function (req, res)
 {
-    res.sendFile(path.join(__dirname + '/index.html'));
+    res.render('index')
 });
 
 app.listen(port)
