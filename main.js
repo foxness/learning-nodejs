@@ -1,6 +1,4 @@
-// var http = require("http")
 const fs = require("fs")
-const path = require('path');
 const express = require('express')
 const app = express()
 
@@ -8,9 +6,9 @@ const port = 80
 
 app.set('view engine', 'ejs');
 
-app.get('/', function(req, res)
+app.get('/', (req, res) =>
 {
-    fs.readFile('data.txt', function (err, data)
+    fs.readFile('data.txt', (err, data) =>
     {
         res.render('index', {data: data.toString().split('\r\n')})
     });
