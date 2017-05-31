@@ -15,15 +15,19 @@ app.get('/', (req, res) =>
 {
     fs.readFile(dataFile, (err, data) =>
     {
-        res.render('index', {data: data.toString().split('\n')})
+        res.render('index', {data: data.toString().split('\n').filter(a => a.length > 0)})
     })
 })
 
 app.post('/add', (req, res) =>
 {
     var newText = req.body.text
+
+    if (newText.length == 0)
+        return
+    
     console.log(`Got new text: ${newText}`)
-    fs.appendFile(dataFile, "\n" + newText, (err) =>
+    fs.appendFile(dataFile, newText + "\n", (err) =>
     {
         if (err)
             throw err
