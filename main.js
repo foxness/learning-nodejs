@@ -4,14 +4,13 @@ const path = require('path');
 const express = require('express')
 const app = express()
 
-var port = 80
-var data = fs.readFileSync('data.txt').toString().split('\r\n')//.map(v => v.trim())
+const port = 80
 
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res)
 {
-    res.render('index', {data: data})
+    res.render('index', {data: fs.readFileSync('data.txt').toString().split('\r\n')})
 });
 
 app.listen(port)
