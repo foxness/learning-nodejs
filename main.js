@@ -8,9 +8,12 @@ const port = 80
 
 app.set('view engine', 'ejs');
 
-app.get('/', function (req, res)
+app.get('/', function(req, res)
 {
-    res.render('index', {data: fs.readFileSync('data.txt').toString().split('\r\n')})
+    fs.readFile('data.txt', function (err, data)
+    {
+        res.render('index', {data: data.toString().split('\r\n')})
+    });
 });
 
 app.listen(port)
