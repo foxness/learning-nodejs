@@ -11,9 +11,10 @@ app.get('/', (req, res) =>
     fs.readFile('data.txt', (err, data) =>
     {
         res.render('index', {data: data.toString().split('\r\n')})
-    });
-});
+    })
+})
 
-app.listen(port)
-
-console.log('Server running at http://localhost:' + port + '/')
+app.listen(port, () =>
+{
+    console.log('Server running at http://localhost:' + port + '/')
+})
