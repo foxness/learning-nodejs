@@ -1,10 +1,17 @@
-var http = require("http");
-var port = 80;
+// var http = require("http")
+const fs = require("fs")
+const path = require('path');
+const express = require('express')
+const app = express()
 
-http.createServer(function(request, response)
+var port = 80
+var data = fs.readFileSync('data.txt').toString().split('\r\n')//.map(v => v.trim())
+
+app.get('/', function (req, res)
 {
-   response.writeHead(200, {'Content-Type': 'text/html'});
-   response.end('<pre>Hello World\n</pre>');
-}).listen(port);
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
 
-console.log('Server running at http://localhost:' + port + '/');
+app.listen(port)
+
+console.log('Server running at http://localhost:' + port + '/')
