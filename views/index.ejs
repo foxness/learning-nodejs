@@ -3,20 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <title>Hey</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
   </head>
   <body>
-    <div>
-      <h1>data:</h1>
-      <div>
+    <div class="main">
+      <div class="container">
+      <h1>:)</h1>
         <ul>
-        <% for(var i = 0; i < data.length; i++) { %>
-          <li><%= data[i] %></li>
-        <% } %>
-        </ul>
+        <% for(var i = 0; i < data.length; i++) { %>  <li><%= data[i] %></li>
+        <% } %></ul>
         <input id="text" type="text" placeholder="Enter some text here">
-        <input type="button" onclick="jQuery.submit()" value="Submit">
+        <input id="submit" type="button" onclick="jQuery.submit()" value="Submit">
       </div>
     </div>
   </body>
